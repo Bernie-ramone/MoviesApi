@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:5243
+@movieId = 00000000-0000-0000-0000-000000000000
+
+### List movies (paged)
+GET {{baseUrl}}/api/movies?page=1&pageSize=10
+
+### Get by id
+GET {{baseUrl}}/api/movies/{{movieId}}
+
+### Create
+POST {{baseUrl}}/api/movies
+Content-Type: application/json
+
+{
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "releaseDate": "2010-07-16",
+  "genre": "Sci-Fi",
+  "synopsis": "A thief who steals corporate secrets through dream-sharing technology."
+}
+
+### Update
+PUT {{baseUrl}}/api/movies/{{movieId}}
+Content-Type: application/json
+
+{
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "releaseDate": "2010-07-16",
+  "genre": "Science Fiction",
+  "synopsis": "A thief who steals corporate secrets through dream-sharing technology."
+}
+
+### Delete
+DELETE {{baseUrl}}/api/movies/{{movieId}}
+
+### Validation error (expect 400)
+POST {{baseUrl}}/api/movies
+Content-Type: application/json
+
+{
+  "title": "",
+  "director": "",
+  "releaseDate": "2010-07-16",
+  "genre": "",
+  "synopsis": ""
+}
